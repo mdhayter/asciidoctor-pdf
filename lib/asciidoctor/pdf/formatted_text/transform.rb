@@ -16,6 +16,7 @@ module Asciidoctor
         HexColorRx = /^#\h\h\h\h{0,3}$/
         TextDecorationTable = { 'underline' => :underline, 'line-through' => :strikethrough }
         ThemeKeyToFragmentProperty = {
+          'border_changebar' => :border_changebar,
           'background_color' => :background_color,
           'border_color' => :border_color,
           'border_offset' => :border_offset,

@@ -36,7 +36,17 @@ module Asciidoctor::PDF::FormattedText
         end
         pdf.fill_color prev_fill_color
       end
-      if (border_width = data[:border_width]) && (border_color = data[:border_color])
+      if (border_width = data[:border_changebar])
+        #border_width = 1
+        border_color = data[:border_color]
+        prev_stroke_color = pdf.stroke_color
+        prev_line_width = pdf.line_width
+        pdf.stroke_color border_color
+        pdf.line_width border_width
+        pdf.stroke_vertical_line fragment.top + border_offset, fragment.top-height, :at => 50 - pdf.bounds.absolute_left
+        pdf.stroke_color prev_stroke_color
+        pdf.line_width prev_line_width
+      elsif (border_width = data[:border_width]) && (border_color = data[:border_color])
         prev_stroke_color = pdf.stroke_color
         prev_line_width = pdf.line_width
         pdf.stroke_color border_color

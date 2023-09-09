@@ -1,0 +1,21 @@
+Plain pdf
+./bin/asciidoctor-pdf --attribute=mathematical-format=svg     --attribute=pdf-fontsdir=/home/mdh/github/riscv-zawrs/docs-resources/fonts     --attribute=pdf-theme=/home/mdh/github/docs-dev-guide/resources/themes/riscv-pdf.yml     --failure-level=ERROR     --require=asciidoctor-diagram       --out-file=/home/mdh/tmp/justpdf.pdf  ~/github/riscv-zawrs/header.adoc --trace
+
+Diff pdf
+./bin/asciidoctor-pdf --attribute=mathematical-format=svg     --attribute=pdf-fontsdir=/home/mdh/github/riscv-zawrs/docs-resources/fonts     --attribute=pdf-theme=/home/mdh/github/docs-dev-guide/resources/themes/riscv-pdf.yml     --failure-level=ERROR     --require=asciidoctor-diagram       --out-file=/home/mdh/tmp/justpdf.pdf  --diff ~/github/riscv-zawrs-old/header.adoc ~/github/riscv-zawrs/header.adoc --trace
+
+
+./adiff --attribute=mathematical-format=svg     --attribute=pdf-fontsdir=../riscv-zawrs/docs-resources/fonts     --attribute=pdf-theme=../docs-dev-guide/resources/themes/riscv-pdf.yml     --failure-level=ERROR     --require=asciidoctor-diagram     --require=asciidoctor-mathematical     --out-file=foo.pdf --diff ~/difftest/dtu_uarch_feb_archive_spec.adoc  ~/difftest/dtu_uarch_spec.adoc --trace
+
+./adiff --attribute=mathematical-format=svg     --attribute=pdf-fontsdir=../riscv-zawrs/docs-resources/fonts     --attribute=pdf-theme=../docs-dev-guide/resources/themes/riscv-pdf.yml     --failure-level=ERROR     --require=asciidoctor-diagram     --require=asciidoctor-mathematical  -b html -a docinfo=shared -a docinfodir=`pwd`   --out-file=foo.html --diff ~/difftest/dtu_uarch_feb_archive_spec.adoc  ~/difftest/dtu_uarch_spec.adoc --trace
+
+Changes:
+- add changebar support to pdf
+  changes to:
+
+        modified:   lib/asciidoctor/pdf/formatted_text/text_background_and_border_renderer.rb
+        modified:   lib/asciidoctor/pdf/formatted_text/transform.rb
+
+Test with
+./bin/asciidoctor-pdf --attribute=mathematical-format=svg     --attribute=pdf-fontsdir=/home/mdh/github/riscv-zawrs/docs-resources/fonts     --attribute=pdf-theme=/home/mdh/github/docs-dev-guide/resources/themes/riscv-pdf.yml     --failure-level=ERROR     --require=asciidoctor-diagram       --out-file=/home/mdh/tmp/justpdf.pdf  ~/github/docs-dev-guide/book_header.adoc --trace
+and read the changebar section
