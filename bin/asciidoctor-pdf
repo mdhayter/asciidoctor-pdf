@@ -6,7 +6,10 @@ if File.file? (asciidoctor_pdf = File.join (File.dirname __dir__), 'lib/asciidoc
 else
   require 'asciidoctor/pdf'
 end
-require 'asciidoctor/cli'
+require 'optparse'
+require_relative '../diffcli/options.rb'
+require_relative '../diffcli/invoker.rb'
+require_relative '../diffcli/differ.rb'
 
 # FIXME: provide an API in Asciidoctor for sub-projects to prepend version information
 options = (Asciidoctor::Cli::Options.new backend: 'pdf', header_footer: true).extend (Module.new do

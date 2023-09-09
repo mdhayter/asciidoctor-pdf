@@ -1,3 +1,7 @@
+Note for upstream:
+git remote add upstream https://github.com/asciidoctor/asciidoctor-pdf.git
+
+
 Plain pdf
 ./bin/asciidoctor-pdf --attribute=mathematical-format=svg     --attribute=pdf-fontsdir=/home/mdh/github/riscv-zawrs/docs-resources/fonts     --attribute=pdf-theme=/home/mdh/github/docs-dev-guide/resources/themes/riscv-pdf.yml     --failure-level=ERROR     --require=asciidoctor-diagram       --out-file=/home/mdh/tmp/justpdf.pdf  ~/github/riscv-zawrs/header.adoc --trace
 
@@ -10,7 +14,7 @@ Diff pdf
 ./adiff --attribute=mathematical-format=svg     --attribute=pdf-fontsdir=../riscv-zawrs/docs-resources/fonts     --attribute=pdf-theme=../docs-dev-guide/resources/themes/riscv-pdf.yml     --failure-level=ERROR     --require=asciidoctor-diagram     --require=asciidoctor-mathematical  -b html -a docinfo=shared -a docinfodir=`pwd`   --out-file=foo.html --diff ~/difftest/dtu_uarch_feb_archive_spec.adoc  ~/difftest/dtu_uarch_spec.adoc --trace
 
 Changes:
-- add changebar support to pdf
+- add changebar support to pdf branch changebars
   changes to:
 
         modified:   lib/asciidoctor/pdf/formatted_text/text_background_and_border_renderer.rb
@@ -19,3 +23,7 @@ Changes:
 Test with
 ./bin/asciidoctor-pdf --attribute=mathematical-format=svg     --attribute=pdf-fontsdir=/home/mdh/github/riscv-zawrs/docs-resources/fonts     --attribute=pdf-theme=/home/mdh/github/docs-dev-guide/resources/themes/riscv-pdf.yml     --failure-level=ERROR     --require=asciidoctor-diagram       --out-file=/home/mdh/tmp/justpdf.pdf  ~/github/docs-dev-guide/book_header.adoc --trace
 and read the changebar section
+
+Make local diffcli
+- copy asciidoctor/lib/asciidoctor/cli/* as baseline
+Add options for --diff
